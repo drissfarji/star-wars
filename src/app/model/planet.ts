@@ -13,8 +13,8 @@ export interface Planet extends HasUrlId, HasMetadata {
 	terrain: string;
 	surface_water: number;
 	population: number;
-	residents: People[];
-	films: Film[];
+	residents: string[] | UrlId[] | People[];
+	films: string[] | UrlId[] | Film[];
 	created: string;
 	edited: string;
 	url: string;

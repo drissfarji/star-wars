@@ -5,20 +5,13 @@ import { Observable } from 'rxjs/Observable';
 
 import { ResponseRequestModel } from '../model/response-request-model';
 import { Planet } from '../model/planet';
+import { SwapiService } from './swapi.service';
 
 @Injectable()
-export class PlanetService {
+export class PlanetService extends SwapiService<Planet> {
 
-	url = 'https://swapi.co/api';
-
-	constructor(private http: HttpClient) { }
-
-	getPlanets(): Observable<ResponseRequestModel<Planet>> {
-		return this.http.get<ResponseRequestModel<Planet>>(this.url + '/planets/');
-	}
-
-	getPlanet(url: UrlId): Observable<Planet> {
-		return this.http.get<Planet>(url.url);
+	constructor(http: HttpClient) {
+		super(http, 'https://swapi.co/api/planets/', ['residents', 'films']);
 	}
 
 }

@@ -7,7 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 
 // angular Material design imports
-import { MatCardModule, MatButtonModule, MatTableModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatTableModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
 
 // routes import
@@ -22,11 +22,7 @@ import { AppComponent } from './app.component';
 import { PeopleComponent } from './people/people.component';
 
 @NgModule({
-	exports: [
-		MatCardModule,
-		MatButtonModule,
-		MatTableModule
-	],
+	exports: [],
 	declarations: [
 		AppComponent,
 		PeopleComponent
@@ -40,6 +36,7 @@ import { PeopleComponent } from './people/people.component';
 		MatButtonModule,
 		MatTableModule,
 		MatTabsModule,
+		MatProgressSpinnerModule,
 		routing
 	],
 	providers: [PeopleService, PlanetService],

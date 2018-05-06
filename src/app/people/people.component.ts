@@ -1,21 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { forEach } from '@angular/router/src/utils/collection';
 
-import { MatTableDataSource } from '@angular/material';
-
-import 'rxjs/add/operator/concatMap';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/merge';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/from';
+import { MatTableDataSource, MatSpinner } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 
 import { People } from '../model/people';
 
 import { PeopleService } from '../services/people.service';
-import { PlanetService } from '../services/planet.service';
 
 @Component({
 	selector: 'app-people',
@@ -24,12 +15,13 @@ import { PlanetService } from '../services/planet.service';
 })
 export class PeopleComponent implements OnInit {
 
-	// data: People[];
 	dataSource = new MatTableDataSource<People>([]);
+	isLoadingResults = true;
+	isRateLimitReached = false;
 
 	displayedColumns = ['url', 'name', 'homeworld'];
 
-	constructor(private service: PeopleService, private planetService: PlanetService) { }
+	constructor(private service: PeopleService) { }
 
 	ngOnInit() {
 		this.service.getPeople().subscribe(async (people) => {
@@ -39,6 +31,7 @@ export class PeopleComponent implements OnInit {
 			// horrible hack to cause table refresh
 			this.dataSource.data = [];
 			this.dataSource.data = characters;
+			this.isLoadingResults = false;
 		});
 	}
 
