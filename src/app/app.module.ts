@@ -21,14 +21,14 @@ import { PlanetService } from './services/planet.service';
 
 // components imports
 import { AppComponent } from './app.component';
-import { PeopleComponent } from './people-list/people-list.component';
+import { PeopleListComponent } from './people-list/people-list.component';
 import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
 
 @NgModule({
 	exports: [],
 	declarations: [
 		AppComponent,
-		PeopleComponent,
+		PeopleListComponent,
 		PlanetDetailComponent
 	],
 	imports: [

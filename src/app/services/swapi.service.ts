@@ -26,8 +26,10 @@ export class SwapiService<T extends HasUrlId & HasMetadata> {
 			.mergeMap(item => this.transform(item));
 	}
 
-	public getData(): Observable<ResponseRequestModel<T>> {
-		return this.http.get<ResponseRequestModel<T>>(this.sourceUrl);
+	public getData(): Observable<T> {
+		return this.http.get<ResponseRequestModel<T>>(this.sourceUrl)
+			.concatMap(swapi => Observable.of(...swapi.results))
+			.mergeMap(item => this.transform(item));
 	}
 
 	protected transform(object: T): Observable<T> {

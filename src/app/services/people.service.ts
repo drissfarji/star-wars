@@ -18,13 +18,12 @@ export class PeopleService extends SwapiService<People> {
 		super(http, sourceURL['people'], ['homeworld', 'films', 'vehicle', 'species', 'starship']);
 	}
 
-	getPeople(): Observable<People> {
-		return this.getData().concatMap(json => Observable.of(...json.results))
-			.mergeMap(item => this.transform(item))
-			.mergeMap(item => Observable.of(item).mergeMap(async (character) => {
+	transform(item: People): Observable<People> {
+		return super.transform(item)
+			.mergeMap(async (character) => {
 				const planet = await this.planetService.getItemByUrlId(<UrlId>character.homeworld).toPromise();
 				character.homeworld = planet;
 				return character;
-			}));
+			});
 	}
 }

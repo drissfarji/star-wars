@@ -5,7 +5,7 @@
 				Planet Detail :
 			</mat-panel-title>
 			<mat-panel-description>
-				{{ planet.name }}
+				{{ planet.name }} {{ planet.url.id }}
 			</mat-panel-description>
 		</mat-expansion-panel-header>
 		<div>Rotation period : {{ planet.rotation_period }}</div>
@@ -17,3 +17,17 @@
 		<div>Water : {{ planet.surface_water }}</div>
 		<div>Population : {{ planet.population }}</div>
 	</mat-expansion-panel>
+
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				Residents :
+			</mat-panel-title>
+			<mat-panel-description>
+				{{ planet.residents.length }}
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+		<app-people-list [setData]="planet.residents"></app-people-list>
+	</mat-expansion-panel>
+
+</mat-accordion>
