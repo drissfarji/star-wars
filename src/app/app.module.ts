@@ -11,6 +11,7 @@ import { MatCardModule, MatButtonModule, MatTableModule, MatProgressSpinnerModul
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 
+import * as swapi from './services/conf.api.urls';
 // routes import
 import { routing } from './app.routes';
 
@@ -43,7 +44,8 @@ import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
 		MatExpansionModule,
 		routing
 	],
-	providers: [PeopleService, PlanetService],
+	providers: [PeopleService, PlanetService,
+	{provide: 'URLS', useValue: swapi.default}],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

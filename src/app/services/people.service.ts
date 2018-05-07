@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -14,8 +14,8 @@ import { SwapiService } from './swapi.service';
 @Injectable()
 export class PeopleService extends SwapiService<People> {
 
-	constructor(http: HttpClient, private planetService: PlanetService) {
-		super(http, 'https://swapi.co/api/people/', ['homeworld', 'films', 'vehicle', 'species', 'starship']);
+	constructor(http: HttpClient, @Inject('URLS') sourceURL: string, private planetService: PlanetService) {
+		super(http, sourceURL['people'], ['homeworld', 'films', 'vehicle', 'species', 'starship']);
 	}
 
 	getPeople(): Observable<People> {
