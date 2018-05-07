@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -13,12 +13,13 @@ import { Planet } from '../model/planet';
 export class PlanetDetailComponent implements OnInit, OnDestroy {
 
 	private sub: Subscription;
-	private planet: Planet;
+	@Input() planet: Planet;
 
 	constructor(private planetService: PlanetService, private route: ActivatedRoute) { }
 
 	ngOnInit() {
-		this.sub = this.route.params
+		if (this.planet == null) {
+			this.sub = this.route.params
 			.subscribe(params => this.planetService.getItemById(params['id'])
 				.subscribe(
 					planet => this.planet = planet,
@@ -26,10 +27,13 @@ export class PlanetDetailComponent implements OnInit, OnDestroy {
 					() => { },
 			)
 			);
+		}
 	}
 
 	ngOnDestroy() {
-		this.sub.unsubscribe();
+		if (this.sub != null) {
+			this.sub.unsubscribe();
+		}
 	}
 
 }

@@ -1,0 +1,89 @@
+<!-- 'url',
+		'name',
+		'rotation_period',
+		'orbital_period',
+		'diameter',
+		'climate',
+		'gravity',
+		'terrain',
+		'surface_water',
+		'population'
+	-->
+
+	<div class="example-container mat-elevation-z8">
+			<div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+				<mat-spinner style="margin:0 auto;" mode="indeterminate" *ngIf="isLoadingResults"></mat-spinner>
+				<div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+					GitHub's API rate limit has been reached. It will be reset in one minute.
+				</div>
+			</div>
+		
+			<mat-table #table [dataSource]="dataSource" class="example-table" matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+		
+				<!--- Note that these columns can be defined in any order.
+						The actual rendered columns are set as a property on the row definition" -->
+		
+				<!-- displayedColumns = ['url', 'name', 'gender', 'birth_year', 'homeworld', 'height', 'mass', 'hair_color', 'skin_color', 'eye_color'];-->
+		
+				<ng-container matColumnDef="url">
+					<mat-header-cell *matHeaderCellDef>id</mat-header-cell>
+					<mat-cell *matCellDef="let row">{{ row.url.id }}</mat-cell>
+				</ng-container>
+		
+		
+				<ng-container matColumnDef="name">
+					<mat-header-cell *matHeaderCellDef>name</mat-header-cell>
+					<mat-cell *matCellDef="let row">
+							<a mat-raised-button color="primary" [routerLink]="['/planets/view', row.url.id]">{{ row.name }}</a>      
+						</mat-cell>
+				</ng-container>
+		
+		
+				<ng-container matColumnDef="rotation_period">
+					<mat-header-cell *matHeaderCellDef>rotation_period</mat-header-cell>
+					<mat-cell *matCellDef="let row">{{ row.rotation_period }}</mat-cell>
+				</ng-container>
+		
+				<ng-container matColumnDef="orbital_period">
+					<mat-header-cell *matHeaderCellDef>orbital_period</mat-header-cell>
+					<mat-cell *matCellDef="let row">{{ row.orbital_period }}</mat-cell>
+				</ng-container>
+		
+				<ng-container matColumnDef="diameter">
+					<mat-header-cell *matHeaderCellDef>diameter</mat-header-cell>
+					<mat-cell *matCellDef="let row">
+						{{row.diameter}}         
+					</mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="climate">
+						<mat-header-cell *matHeaderCellDef>climate</mat-header-cell>
+						<mat-cell *matCellDef="let row">
+							{{row.climate}}         
+						</mat-cell>
+					</ng-container>
+		
+				<ng-container matColumnDef="gravity">
+					<mat-header-cell *matHeaderCellDef>gravity</mat-header-cell>
+					<mat-cell *matCellDef="let row">{{ row.gravity }}</mat-cell>
+				</ng-container>
+		
+				<ng-container matColumnDef="terrain">
+					<mat-header-cell *matHeaderCellDef>terrain</mat-header-cell>
+					<mat-cell *matCellDef="let row">{{ row.terrain }}</mat-cell>
+				</ng-container>
+		
+				<ng-container matColumnDef="surface_water">
+					<mat-header-cell *matHeaderCellDef>surface_water</mat-header-cell>
+					<mat-cell *matCellDef="let row">{{ row.surface_water }}</mat-cell>
+				</ng-container>
+		
+				<ng-container matColumnDef="population">
+					<mat-header-cell *matHeaderCellDef>population</mat-header-cell>
+					<mat-cell *matCellDef="let row">{{ row.population }}</mat-cell>
+				</ng-container>
+	
+				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+				<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+			</mat-table>
+		</div>

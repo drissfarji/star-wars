@@ -1,3 +1,21 @@
-<p>
-  people-detail works!
-</p>
+<mat-accordion *ngIf="person">
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				Personal detail :
+			</mat-panel-title>
+			<mat-panel-description>
+				id: {{ person.url.id }}, {{ person.name }}
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+		<div>Height : {{ person.height }}</div>
+		<div>Mass : {{ person.mass }}</div>
+		<div>Hairs : {{ person.hair_color }}</div>
+		<div>Skin : {{ person.skin_color }}</div>
+		<div>Eye : {{ person.eye_color }}</div>
+		<div>Birth : {{ person.birth_year }}</div>
+		<div>Gender : {{ person.gender }}</div>
+
+	</mat-expansion-panel>
+	</mat-accordion>
+	<app-planet-detail *ngIf="person" [planet]="person.homeworld"></app-planet-detail>

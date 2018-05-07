@@ -12,6 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 
+
 import * as swapi from './services/conf.api.urls';
 // routes import
 import { routing } from './app.routes';
@@ -27,15 +28,17 @@ import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
 import { FilmListComponent } from './film-list/film-list.component';
 import { FilmService } from './services/film.service';
 import { PeopleDetailComponent } from './people-detail/people-detail.component';
+import { PlanetListComponent } from './planet-list/planet-list.component';
 
 @NgModule({
 	exports: [],
 	declarations: [
 		AppComponent,
 		PeopleListComponent,
+		PeopleDetailComponent,
+		PlanetListComponent,
 		PlanetDetailComponent,
 		FilmListComponent,
-		PeopleDetailComponent
 	],
 	imports: [
 		BrowserModule,
