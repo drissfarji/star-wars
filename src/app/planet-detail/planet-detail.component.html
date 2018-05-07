@@ -1,3 +1,19 @@
-<p *ngIf="planet">
-	{{ planet.name }}
-</p>
+<mat-accordion *ngIf="planet">
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				Planet Detail :
+			</mat-panel-title>
+			<mat-panel-description>
+				{{ planet.name }}
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+		<div>Rotation period : {{ planet.rotation_period }}</div>
+		<div>Orbital period : {{ planet.orbital_period }}</div>
+		<div>Diameter : {{ planet.diameter }}</div>
+		<div>Climate : {{ planet.climate }}</div>
+		<div>Gravity : {{ planet.gravity }}</div>
+		<div>Terrain : {{ planet.terrain }}</div>
+		<div>Water : {{ planet.surface_water }}</div>
+		<div>Population : {{ planet.population }}</div>
+	</mat-expansion-panel>

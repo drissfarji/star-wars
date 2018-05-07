@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MatTableDataSource, MatSpinner } from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -16,7 +16,9 @@ import { PeopleService } from '../services/people.service';
 export class PeopleComponent implements OnInit {
 
 	dataSource = new MatTableDataSource<People>([]);
+
 	isLoadingResults = true;
+
 	isRateLimitReached = false;
 
 	displayedColumns = ['url', 'name', 'homeworld'];
@@ -33,9 +35,5 @@ export class PeopleComponent implements OnInit {
 			this.dataSource.data = characters;
 			this.isLoadingResults = false;
 		});
-	}
-
-	redirectToPlanetDetail(id: string) {
-		console.log('redirectTo ' + id);
 	}
 }

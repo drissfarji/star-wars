@@ -9,6 +9,7 @@ import {BrowserModule} from '@angular/platform-browser';
 // angular Material design imports
 import { MatCardModule, MatButtonModule, MatTableModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 // routes import
 import { routing } from './app.routes';
@@ -39,6 +40,7 @@ import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
 		MatTableModule,
 		MatTabsModule,
 		MatProgressSpinnerModule,
+		MatExpansionModule,
 		routing
 	],
 	providers: [PeopleService, PlanetService],
