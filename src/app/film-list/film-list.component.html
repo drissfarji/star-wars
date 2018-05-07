@@ -1,0 +1,55 @@
+<div class="example-container mat-elevation-z8">
+	<div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+		<mat-spinner style="margin:0 auto;" mode="indeterminate" *ngIf="isLoadingResults"></mat-spinner>
+		<div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+			GitHub's API rate limit has been reached. It will be reset in one minute.
+		</div>
+	</div>
+
+	<mat-table #table [dataSource]="dataSource" class="example-table" matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+
+		<!--- Note that these columns can be defined in any order.
+				The actual rendered columns are set as a property on the row definition" -->
+
+
+		<!-- Title Column -->
+		<ng-container matColumnDef="episode_id">
+			<mat-header-cell *matHeaderCellDef>id</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.episode_id }}</mat-cell>
+		</ng-container>
+
+		<!-- Number Column -->
+		<ng-container matColumnDef="title">
+			<mat-header-cell *matHeaderCellDef>name</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.title }}</mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="director">
+			<mat-header-cell *matHeaderCellDef>director</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.director }}</mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="producer">
+			<mat-header-cell *matHeaderCellDef>producer</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.producer }}</mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="release_date">
+			<mat-header-cell *matHeaderCellDef>release_date</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.release_date }}</mat-cell>
+		</ng-container>
+
+		<!--
+		<ng-container matColumnDef="homeworld">
+			<mat-header-cell *matHeaderCellDef>homeworld</mat-header-cell>
+			<mat-cell *matCellDef="let row">
+				<a [routerLink]="['/planets/view', row.homeworld.url.id]" mat-button>{{row.homeworld.name}}</a>          
+			</mat-cell>
+		</ng-container>
+		-->
+		
+
+		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+		<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+	</mat-table>
+</div>

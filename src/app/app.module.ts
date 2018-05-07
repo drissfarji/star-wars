@@ -10,6 +10,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import { MatCardModule, MatButtonModule, MatTableModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
 
 import * as swapi from './services/conf.api.urls';
 // routes import
@@ -23,13 +24,16 @@ import { PlanetService } from './services/planet.service';
 import { AppComponent } from './app.component';
 import { PeopleListComponent } from './people-list/people-list.component';
 import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
+import { FilmListComponent } from './film-list/film-list.component';
+import { FilmService } from './services/film.service';
 
 @NgModule({
 	exports: [],
 	declarations: [
 		AppComponent,
 		PeopleListComponent,
-		PlanetDetailComponent
+		PlanetDetailComponent,
+		FilmListComponent
 	],
 	imports: [
 		BrowserModule,
@@ -42,10 +46,18 @@ import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
 		MatTabsModule,
 		MatProgressSpinnerModule,
 		MatExpansionModule,
+		MatIconModule,
 		routing
 	],
-	providers: [PeopleService, PlanetService,
-	{provide: 'URLS', useValue: swapi.default}],
+	providers: [
+		PeopleService,
+		PlanetService,
+		FilmService,
+		{
+			provide: 'URLS',
+			useValue: swapi.default
+		}
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

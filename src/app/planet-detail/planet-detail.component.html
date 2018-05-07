@@ -6,6 +6,7 @@
 			</mat-panel-title>
 			<mat-panel-description>
 				{{ planet.name }} {{ planet.url.id }}
+				<mat-icon>language</mat-icon>
 			</mat-panel-description>
 		</mat-expansion-panel-header>
 		<div>Rotation period : {{ planet.rotation_period }}</div>
@@ -28,6 +29,18 @@
 			</mat-panel-description>
 		</mat-expansion-panel-header>
 		<app-people-list [setData]="planet.residents"></app-people-list>
+	</mat-expansion-panel>
+
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				Films :
+			</mat-panel-title>
+			<mat-panel-description>
+				{{ planet.films.length }}
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+		<app-film-list [setData]="planet.films"></app-film-list>
 	</mat-expansion-panel>
 
 </mat-accordion>
