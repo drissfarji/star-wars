@@ -21,7 +21,7 @@ export class SwapiService<T extends HasUrlId & HasMetadata> {
 		return this.getItemById(url.id);
 	}
 
-	private getItemById(id: number): Observable<T> {
+	public getItemById(id: number): Observable<T> {
 		return this.http.get<T>(`${this.sourceUrl}${id}/`)
 			.mergeMap(item => this.transform(item));
 	}
