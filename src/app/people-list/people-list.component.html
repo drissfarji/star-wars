@@ -22,7 +22,7 @@
 		<ng-container matColumnDef="name">
 			<mat-header-cell *matHeaderCellDef>name</mat-header-cell>
 			<mat-cell *matCellDef="let row">
-					<a mat-raised-button [routerLink]="['/people/view', row.url.id]">{{ row.name }}</a>      
+					<a mat-raised-button color="primary" [routerLink]="['/people/view', row.url.id]">{{ row.name }}</a>      
 				</mat-cell>
 		</ng-container>
 
@@ -40,7 +40,7 @@
 		<ng-container matColumnDef="homeworld">
 			<mat-header-cell *matHeaderCellDef>homeworld</mat-header-cell>
 			<mat-cell *matCellDef="let row">
-				<a mat-raised-button [routerLink]="['/planets/view', row.homeworld.url.id]">{{row.homeworld.name}}</a>          
+				<a mat-raised-button color="primary" [routerLink]="['/planets/view', row.homeworld.url.id]">{{row.homeworld.name}}</a>          
 			</mat-cell>
 		</ng-container>
 
