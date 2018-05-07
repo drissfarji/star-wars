@@ -10,8 +10,8 @@ import { PeopleService } from '../services/people.service';
 
 @Component({
 	selector: 'app-people',
-	templateUrl: './people.component.html',
-	styleUrls: ['./people.component.css']
+	templateUrl: './people-list.component.html',
+	styleUrls: ['./people-list.component.css']
 })
 export class PeopleComponent implements OnInit {
 
