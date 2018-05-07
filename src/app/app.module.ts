@@ -26,6 +26,7 @@ import { PeopleListComponent } from './people-list/people-list.component';
 import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
 import { FilmListComponent } from './film-list/film-list.component';
 import { FilmService } from './services/film.service';
+import { PeopleDetailComponent } from './people-detail/people-detail.component';
 
 @NgModule({
 	exports: [],
@@ -33,7 +34,8 @@ import { FilmService } from './services/film.service';
 		AppComponent,
 		PeopleListComponent,
 		PlanetDetailComponent,
-		FilmListComponent
+		FilmListComponent,
+		PeopleDetailComponent
 	],
 	imports: [
 		BrowserModule,

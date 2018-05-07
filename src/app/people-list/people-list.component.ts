@@ -21,7 +21,7 @@ export class PeopleListComponent implements OnInit {
 
 	isRateLimitReached = false;
 
-	displayedColumns = ['url', 'name', 'homeworld'];
+	displayedColumns = ['url', 'name', 'gender', 'birth_year', 'homeworld', 'height', 'mass', 'hair_color', 'skin_color', 'eye_color'];
 
 	stream: Observable<People>;
 

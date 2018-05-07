@@ -11,26 +11,65 @@
 		<!--- Note that these columns can be defined in any order.
 				The actual rendered columns are set as a property on the row definition" -->
 
+		<!-- displayedColumns = ['url', 'name', 'gender', 'birth_year', 'homeworld', 'height', 'mass', 'hair_color', 'skin_color', 'eye_color'];-->
 
-		<!-- Title Column -->
 		<ng-container matColumnDef="url">
 			<mat-header-cell *matHeaderCellDef>id</mat-header-cell>
 			<mat-cell *matCellDef="let row">{{ row.url.id }}</mat-cell>
 		</ng-container>
 
-		<!-- Number Column -->
+
 		<ng-container matColumnDef="name">
 			<mat-header-cell *matHeaderCellDef>name</mat-header-cell>
-			<mat-cell *matCellDef="let row">{{ row.name }}</mat-cell>
+			<mat-cell *matCellDef="let row">
+					<a mat-raised-button [routerLink]="['/people/view', row.url.id]">{{ row.name }}</a>      
+				</mat-cell>
+		</ng-container>
+
+
+		<ng-container matColumnDef="gender">
+			<mat-header-cell *matHeaderCellDef>gender</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.gender }}</mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="birth_year">
+			<mat-header-cell *matHeaderCellDef>birth_year</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.birth_year }}</mat-cell>
 		</ng-container>
 
 		<ng-container matColumnDef="homeworld">
 			<mat-header-cell *matHeaderCellDef>homeworld</mat-header-cell>
 			<mat-cell *matCellDef="let row">
-				<a [routerLink]="['/planets/view', row.homeworld.url.id]" mat-button>{{row.homeworld.name}}</a>          
+				<a mat-raised-button [routerLink]="['/planets/view', row.homeworld.url.id]">{{row.homeworld.name}}</a>          
 			</mat-cell>
 		</ng-container>
 
+		<ng-container matColumnDef="height">
+			<mat-header-cell *matHeaderCellDef>height</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.height }}</mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="mass">
+			<mat-header-cell *matHeaderCellDef>mass</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.mass }}</mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="hair_color">
+			<mat-header-cell *matHeaderCellDef>hair_color</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.hair_color }}</mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="skin_color">
+			<mat-header-cell *matHeaderCellDef>skin_color</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.skin_color }}</mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="eye_color">
+			<mat-header-cell *matHeaderCellDef>eye_color</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row.eye_color }}</mat-cell>
+		</ng-container>
+
+		
 		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 		<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 	</mat-table>
